@@ -1,0 +1,11 @@
+BPRMeth.Rproj
+.Rproj.user
+.Rhistory
+.RData
+*.toc
+*.log
+*.out
+*.blg
+*.aux
+*.o
+*.so
