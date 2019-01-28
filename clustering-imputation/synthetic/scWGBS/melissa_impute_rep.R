@@ -14,7 +14,7 @@ set.seed(123)
 ##------------------------------------
 # Load preprocessed data
 ##------------------------------------
-io <- list(dataset = "encode/scWGBS_005/", data_file = "prom5k", cov = 15, sd = 0.15)
+io <- list(dataset = "encode/scWGBS/", data_file = "prom10k", cov = 15, sd = 0.2)
 io$data_dir = "../../../local-data/melissa/"
 io$out_dir = paste0(io$data_dir, io$dataset, "/imputation/")
 dt <- readRDS(paste0(io$data_dir, "met/filtered_met/", io$dataset, "/", io$data_file,

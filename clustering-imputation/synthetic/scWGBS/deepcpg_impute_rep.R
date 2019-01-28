@@ -13,7 +13,7 @@ set.seed(123)
 ##------------------------------------
 # Load preprocessed data
 ##------------------------------------
-io <- list(dataset = "ENCODE", data_file = "prom10k", cov = 10, sd = 0.05)
+io <- list(dataset = "encode/scWGBS", data_file = "prom10k", cov = 20, sd = 0.2)
 io$data_dir <- "../../../local-data/melissa/"
 io$sub_dir <- "/"
 io$out_dir <- paste0(io$data_dir, io$dataset, "/imputation/deepcpg/", io$sub_dir)
@@ -31,7 +31,7 @@ opts$filt_region_cov  <- 0.5         # Filter low covered genomic regions
 opts$data_train_prcg  <- 0.4         # % of data to keep fully for training
 opts$region_train_prcg <- 0.95       # % of regions kept for training
 opts$cpg_train_prcg   <- 0.5         # % of CpGs kept for training in each region
-opts$no_cores         <- 4           # Number of cores
+opts$no_cores         <- 1           # Number of cores
 opts$total_sims       <- 10          # Number of simulations
 
 # Run model
@@ -40,7 +40,7 @@ no_cores_out <- BPRMeth:::.parallel_cores(no_cores = opts$total_sims,
                                           max_cores = opts$total_sims)
 print(date())
 model <- parallel::mclapply(X = 1:opts$total_sims, FUN = function(sim)
-    deepcpg_imputation_analysis(X = dt$met, opts = opts), mc.cores = no_cores_out)
+    deepcpg_imputation_analysis(X = dt$met, opts = opts), mc.cores = 3)
 print(date())
 
 ##----------------------------------------------------------------------
