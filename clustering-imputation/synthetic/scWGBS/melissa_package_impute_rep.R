@@ -23,4 +23,4 @@ part_dt <- partition_dataset(dt_obj = melissa_data, data_train_prcg = 0.4,
 K <- 3
 melissa_obj <- melissa(X = part_dt$met, K = K, basis = create_rbf_object(M = 9),
                        delta_0 = rep(3, K) + rbeta(K, 1e-1, 1e1),
-                       vb_max_iter = 500, is_parallel = TRUE, no_cores = 2)
+                       vb_max_iter = 500, is_parallel = TRUE, no_cores = 10)
